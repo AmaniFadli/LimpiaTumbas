@@ -35,11 +35,11 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(enemy, spawnPosition, Quaternion.identity);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
             SpawnEnemy();
         }
-    }
+    }*/
 }
