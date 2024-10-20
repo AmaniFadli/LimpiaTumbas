@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
     private Vector2 playerInput;
 
     private Vector3 playerTransform;
+    private bool jumpInput;
+
     void Start()
     {
         if(instance == null)
@@ -33,5 +35,17 @@ public class PlayerInput : MonoBehaviour
     public Vector3 GetPlayerPosition()
     {
         return playerTransform;
+    }
+
+    public void OnJump(InputValue jump)
+    {
+        jumpInput = jump.isPressed;
+    }
+
+    public bool GetJumpInput()
+    {
+        bool jump = jumpInput;
+        jumpInput = false; 
+        return jump;
     }
 }
