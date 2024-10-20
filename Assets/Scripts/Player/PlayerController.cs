@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;    
     private Transform cameraTransform;
     private MovementBehaviour MVB;
-    private Rigidbody rb;
-
-    [SerializeField] private float jumpForce = 5f;
 
     private bool isGrounded = true;
+    private Vector3 playerTransform;
 
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
         MVB = GetComponent<MovementBehaviour>();
         cameraTransform = Camera.main.transform;
-        rb = GetComponent<Rigidbody>();
+    }
+    public Vector3 GetPlayerPosition()
+    {
+        return playerTransform;
     }
 
     void Update()
     {
+        playerTransform = transform.position;
         Movement();
         Jump();
     }
@@ -38,14 +46,14 @@ public class PlayerController : MonoBehaviour
         cameraRight.Normalize();
 
         Vector3 input = cameraForward * playerWasp.y + cameraRight * playerWasp.x;
-        MVB.MoveIsometric(input);
+        MVB.Move(input);
     }
 
     private void Jump()
     {
         if (PlayerInput.instance.GetJumpInput() && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            MVB.Jump();
             isGrounded = false; 
         }
     }

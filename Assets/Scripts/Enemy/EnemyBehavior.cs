@@ -19,8 +19,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        agent.SetDestination(PlayerInput.instance.GetPlayerPosition());
-
+        agent.SetDestination(PlayerController.instance.GetPlayerPosition());
         
     }
 }

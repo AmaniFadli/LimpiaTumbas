@@ -9,18 +9,24 @@ public class GraveController : MonoBehaviour
     [SerializeField] private GameObject[] gravePartsDefault = new GameObject[NUMPARTS];
     private List<GameObject> newGraveParts = new List<GameObject>();
 
-    [SerializeField] private bool itsFall;
+    private bool itsFall;
+    private bool isInteracted;
+
+    private void Awake()
+    {
+        isInteracted = false;
+    }
     void Start()
     {
         itsFall = false;
     }
-    void Update()
+    public void SetIsInteracted(bool isInteracted)
     {
-        
+        this.isInteracted = isInteracted;
     }
-    private void comproveOrder(GameObject part, int position)
+    private void comproveOrder(GameObject part)
     {
-        if(itsFall == false)
+        if(itsFall == false && isInteracted == true)
         {
             newGraveParts.Add(part);
             int j = 0;

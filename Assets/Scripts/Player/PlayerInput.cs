@@ -7,21 +7,14 @@ public class PlayerInput : MonoBehaviour
 {
     public static PlayerInput instance;
     private Vector2 playerInput;
-
-    private Vector3 playerTransform;
     private bool jumpInput;
-
+    private bool interactInput;
     void Start()
     {
         if(instance == null)
         {
             instance = this;
         }
-    }
-
-    private void Update()
-    {
-        playerTransform = transform.position;
     }
     public void OnMove(InputValue move)
     {
@@ -31,12 +24,6 @@ public class PlayerInput : MonoBehaviour
     {
         return playerInput;
     }
-
-    public Vector3 GetPlayerPosition()
-    {
-        return playerTransform;
-    }
-
     public void OnJump(InputValue jump)
     {
         jumpInput = jump.isPressed;
@@ -47,5 +34,17 @@ public class PlayerInput : MonoBehaviour
         bool jump = jumpInput;
         jumpInput = false; 
         return jump;
+    }
+
+    public void OnInteract(InputValue interact)
+    {
+        interactInput = interact.isPressed;
+        Debug.Log("i " + interactInput);
+    }
+    public bool GetInteractInput()
+    {
+        bool interact = interactInput;
+        interactInput = false;
+        return interact;
     }
 }
