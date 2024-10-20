@@ -28,37 +28,38 @@ public class Cleaner : MonoBehaviour
                 Vector2 textureCoord = raycastHit.textureCoord;
                 if (raycastHit.collider.TryGetComponent<ClenableProp>(out ClenableProp clenableProp))
                 {
-                    int PixelX = (int)(textureCoord.x * clenableProp.dirtMaskTextureBase.width);
-                    int PixelY = (int)(textureCoord.y * clenableProp.dirtMaskTextureBase.height);
-
-                    Vector2Int paintPixelPosition = new Vector2Int(PixelX, PixelY);
-                    //Debug.Log("UV: " + textureCoord + "; Pixels: " + paintPixelPosition);
-
-                    int pixelXOffset = PixelX - (_dirtBrush.width / 2);
-                    int pixelYOffset = PixelY - (_dirtBrush.height / 2);
-
-                    for (int i = 0; i < _dirtBrush.width; i++)
-                    {
-                        for (int j = 0; j < _dirtBrush.height; j++)
-                        {
-                            Color pixelDirt = _dirtBrush.GetPixel(i, j);
-                            Color pixelDirtMask =
-                                clenableProp.dirtyMaskTexture.GetPixel(pixelXOffset + i, pixelYOffset + j);
-
-                            float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
-                            clenableProp.dirtAmount -= removedAmount;
-                            int percentage =
-                                Mathf.RoundToInt(clenableProp.dirtAmount / clenableProp.dirtAmountTotal * 100);
-                            clenableProp.percentageText.text = "" + percentage;
-
-                            clenableProp.dirtyMaskTexture.SetPixel(
-                                pixelXOffset + i,
-                                pixelYOffset + j,
-                                new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
-                        }
-                    }
-
-                    clenableProp.dirtyMaskTexture.Apply();
+                    clenableProp.cleanPixel(_dirtBrush, textureCoord);
+                    // int PixelX = (int)(textureCoord.x * clenableProp.dirtMaskTextureBase.width);
+                    // int PixelY = (int)(textureCoord.y * clenableProp.dirtMaskTextureBase.height);
+                    //
+                    // Vector2Int paintPixelPosition = new Vector2Int(PixelX, PixelY);
+                    // //Debug.Log("UV: " + textureCoord + "; Pixels: " + paintPixelPosition);
+                    //
+                    // int pixelXOffset = PixelX - (_dirtBrush.width / 2);
+                    // int pixelYOffset = PixelY - (_dirtBrush.height / 2);
+                    //
+                    // for (int i = 0; i < _dirtBrush.width; i++)
+                    // {
+                    //     for (int j = 0; j < _dirtBrush.height; j++)
+                    //     {
+                    //         Color pixelDirt = _dirtBrush.GetPixel(i, j);
+                    //         Color pixelDirtMask =
+                    //             clenableProp.dirtyMaskTexture.GetPixel(pixelXOffset + i, pixelYOffset + j);
+                    //
+                    //         float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
+                    //         clenableProp.dirtAmount -= removedAmount;
+                    //         int percentage =
+                    //             Mathf.RoundToInt(clenableProp.dirtAmount / clenableProp.dirtAmountTotal * 100);
+                    //         clenableProp.percentageText.text = "" + percentage;
+                    //
+                    //         clenableProp.dirtyMaskTexture.SetPixel(
+                    //             pixelXOffset + i,
+                    //             pixelYOffset + j,
+                    //             new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
+                    //     }
+                    // }
+                    //
+                    // clenableProp.dirtyMaskTexture.Apply();
                 }
             }
         }

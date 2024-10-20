@@ -6,60 +6,84 @@ using UnityEngine.UI;
 
 public class ClenableProp : MonoBehaviour
 {
+    #region variables
+
     public Material Material;
 
-    [FormerlySerializedAs("_dirtMaskTextureBase")] [SerializeField] private Texture2D _dirtyMaskTextureBase;
+    [FormerlySerializedAs("_dirtMaskTextureBase")] [SerializeField]
+    private Texture2D _dirtyMaskTextureBase;
+
     private Texture2D _dirtyMaskTexture;
-    public Texture2D dirtyMaskTexture { get => _dirtyMaskTexture; private set => _dirtyMaskTexture = value; }
-    public Texture2D dirtMaskTextureBase
-    {
-        get => _dirtyMaskTextureBase;
-        private set => _dirtyMaskTextureBase = value;
-    }
-    public float dirtAmount
-    {
-        get => _dirtAmount;
-        set => _dirtAmount = value;
-    }
-
-    public float dirtAmountTotal
-    {
-        get => _dirtAmountTotal;
-        set => _dirtAmountTotal = value;
-    }
-
-    public Text percentageText
-    {
-        get => _percentageText;
-        set => _percentageText = value;
-    }
 
     [SerializeField] private float _dirtAmountTotal = 0f;
     [SerializeField] private float _dirtAmount;
-    
+
     [SerializeField] private Text _percentageText;
+    private bool _isClean = false;
+
+    #endregion
 
     // Start is called before the first frame update
     void Awake()
     {
-        dirtyMaskTexture = new Texture2D(_dirtyMaskTextureBase.width, _dirtyMaskTextureBase.height);
-        dirtyMaskTexture.SetPixels(_dirtyMaskTextureBase.GetPixels());
-        dirtyMaskTexture.Apply();
-        Material.SetTexture("_DirtyMask", dirtyMaskTexture);
+        _dirtyMaskTexture = new Texture2D(_dirtyMaskTextureBase.width, _dirtyMaskTextureBase.height);
+        _dirtyMaskTexture.SetPixels(_dirtyMaskTextureBase.GetPixels());
+        _dirtyMaskTexture.Apply();
+        Material.SetTexture("_DirtyMask", _dirtyMaskTexture);
         CalculatePixel();
+    }
+
+    public void cleanPixel(Texture2D brush, Vector2 textureCoord)
+    {
+        int PixelX = (int)(textureCoord.x * _dirtyMaskTextureBase.width);
+        int PixelY = (int)(textureCoord.y * _dirtyMaskTextureBase.height);
+
+        //Vector2Int paintPixelPosition = new Vector2Int(PixelX, PixelY);
+        //Debug.Log("UV: " + textureCoord + "; Pixels: " + paintPixelPosition);
+
+        int pixelXOffset = PixelX - (brush.width / 2);
+        int pixelYOffset = PixelY - (brush.height / 2);
+
+        for (int i = 0; i < brush.width; i++)
+        {
+            for (int j = 0; j < brush.height; j++)
+            {
+                Color pixelDirt = brush.GetPixel(i, j);
+                Color pixelDirtMask =
+                    _dirtyMaskTexture.GetPixel(pixelXOffset + i, pixelYOffset + j);
+
+                float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
+                _dirtAmount -= removedAmount;
+                int percentage =
+                    Mathf.RoundToInt(_dirtAmount / _dirtAmountTotal * 100);
+                _percentageText.text = "" + percentage;
+
+                _dirtyMaskTexture.SetPixel(
+                    pixelXOffset + i,
+                    pixelYOffset + j,
+                    new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
+            }
+        }
+
+        _dirtyMaskTexture.Apply();
     }
 
     void CalculatePixel()
     {
-        for (int i = 0; i < dirtMaskTextureBase.width; i++)
+        for (int i = 0; i < _dirtyMaskTextureBase.width; i++)
         {
-            for (int j = 0; j < dirtMaskTextureBase.height; j++)
+            for (int j = 0; j < _dirtyMaskTextureBase.height; j++)
             {
-                _dirtAmountTotal += dirtMaskTextureBase.GetPixel(i, j).g;
+                _dirtAmountTotal += _dirtyMaskTextureBase.GetPixel(i, j).g;
             }
         }
 
         _dirtAmount = _dirtAmountTotal;
-        percentageText.text = "100";
+        _percentageText.text = "100";
+    }
+
+    void CleanModel()
+    {
+        _isClean = true;
     }
 }

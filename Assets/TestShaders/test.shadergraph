@@ -239,8 +239,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 981.0,
-            "y": -364.0
+            "x": 1018.9998779296875,
+            "y": 127.9999771118164
         },
         "m_Blocks": [
             {
@@ -829,7 +829,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"7b42df5960c04bf459bef9246a49c8a2\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"5838c40ddcd35504ebedb2b5ad6e1458\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -1230,7 +1230,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"d6dbc3578938e104bbaeac41e817f82a\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"f8e9b3ca447ff514aa82e3576802d970\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -1748,7 +1748,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"4736d9191ac62554990fbf8521624791\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"040d86b6dc441474390d4029a57a7d38\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": true,
