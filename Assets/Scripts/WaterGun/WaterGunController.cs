@@ -31,22 +31,23 @@ public class WaterGunController : MonoBehaviour
         float shootInput = PlayerInput.instance.GetShootInput();
         if(shootInput != 0 && !isShoot)
         {
-            Vector3 shootDirection = spawnBullets.transform.forward;
-            shootDirection.Normalize();
-            float angleToPointer = Vector3.SignedAngle(Vector3.right, shootDirection, Vector3.forward);
+            if(ShootCoolDown <= 0)
+            {
+                Vector3 shootDirection = spawnBullets.transform.forward;
+                shootDirection.Normalize();
+             
+                GameObject bulletObj = Instantiate(bulletPrefab, spawnBullets.position, Quaternion.identity);
 
-            GameObject bulletObj = Instantiate(bulletPrefab, spawnBullets.position, Quaternion.identity);
-
-            Quaternion localRotation = Quaternion.AngleAxis(-90, Vector3.forward);
-
-            bulletObj.transform.localRotation = localRotation * bulletObj.transform.localRotation;
-
-            localRotation = Quaternion.AngleAxis(angleToPointer, Vector3.forward);
-            bulletObj.transform.localRotation = localRotation * bulletObj.transform.localRotation;
-
-            bulletObj.GetComponent<WaterController>().Init(shootDirection);
-            isShoot = true;
-            ShootCoolDown = timeBetween;
+                Quaternion localRotation = Quaternion.Euler(90,0,0);
+                bulletObj.transform.rotation = localRotation;
+                bulletObj.GetComponent<WaterController>().Init(shootDirection);
+                isShoot = true;
+                ShootCoolDown = timeBetween;
+            } 
+        }
+        else
+        {
+            isShoot = false;
         }
     }
 }

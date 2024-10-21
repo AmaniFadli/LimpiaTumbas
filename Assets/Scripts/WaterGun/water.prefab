@@ -30,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2310163983059056873}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.433, y: 1.9559, z: 0.6487}
-  m_LocalScale: {x: 0.02579954, y: 0.02579954, z: 0.02579954}
+  m_LocalScale: {x: 0.02579954, y: 0.058048967, z: 0.02579954}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8660689672527001857
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4042997bf0e76f4b920e82bc3a0c835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 0.1
   jumpForce: 5
 --- !u!114 &466762862981741889
 MonoBehaviour:
@@ -136,10 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75921c6d5a0db94abe25f98cdf0e152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MB: {fileID: 8631873058070166932}
-  particleExposion: {fileID: 0}
-  waitSeconds: 0
-  colliderName: 
+  particleExposion: {fileID: 4072390044157493011, guid: ec3df4a78c79ff147b6ce9f3a8f27666,
+    type: 3}
   timeToDestroy: 0
 --- !u!54 &-2053614558093272004
 Rigidbody:

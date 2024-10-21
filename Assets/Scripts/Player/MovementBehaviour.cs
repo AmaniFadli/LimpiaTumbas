@@ -22,4 +22,9 @@ public class MovementBehaviour : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+    public void MoveBullet(Vector3 d)
+    {
+        d.Normalize();
+        transform.position += d * speed * Time.deltaTime;
+    }
 }

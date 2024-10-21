@@ -60,7 +60,6 @@ public class PlayerInteract : MonoBehaviour
     public void TryToInteract()
     {
         bool input = PlayerInput.instance.GetInteractInput();
-        Debug.Log(input);
         if(input)
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));

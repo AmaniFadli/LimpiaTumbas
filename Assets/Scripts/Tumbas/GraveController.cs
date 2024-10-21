@@ -53,6 +53,7 @@ public class GraveController : MonoBehaviour
             else
             {
                 itsFall = true;
+                //sale fantasma
             }
         }
     }

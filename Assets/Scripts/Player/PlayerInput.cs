@@ -43,7 +43,6 @@ public class PlayerInput : MonoBehaviour
     public void OnInteract(InputValue interact)
     {
         interactInput = interact.isPressed;
-        Debug.Log("i " + interactInput);
     }
     public bool GetInteractInput()
     {
