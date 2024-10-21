@@ -69,9 +69,10 @@ public class ClenableProp : MonoBehaviour
                     int percentage =
                         Mathf.RoundToInt(_dirtAmount / _dirtAmountTotal * 100);
 
+                    //comprobamos si es la parte correcta
                     if(unaVez == false)
                     {
-                        GraveController.instance.comproveOrder(this.gameObject);
+                        GetComponentInParent<GraveController>().comproveOrder(this.gameObject);
                         unaVez = true;
                     }
                     _percentageText.text = "" + percentage;

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GraveController : MonoBehaviour
 {
-    public static GraveController instance;
     private const int NUMPARTS = 4;
     [SerializeField] private GameObject[] gravePartsDefault = new GameObject[NUMPARTS];
     private List<GameObject> newGraveParts = new List<GameObject>();
@@ -19,10 +18,6 @@ public class GraveController : MonoBehaviour
     }
     void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
         itsFall = false;
     }
     public void SetIsInteracted(bool isInteracted)
