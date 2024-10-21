@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class GraveController : MonoBehaviour
 {
+    public static GraveController instance;
     private const int NUMPARTS = 4;
     [SerializeField] private GameObject[] gravePartsDefault = new GameObject[NUMPARTS];
     private List<GameObject> newGraveParts = new List<GameObject>();
 
     private bool itsFall;
-    private bool isInteracted;
+    public bool isInteracted;
 
     private void Awake()
     {
@@ -18,13 +19,17 @@ public class GraveController : MonoBehaviour
     }
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
         itsFall = false;
     }
     public void SetIsInteracted(bool isInteracted)
     {
         this.isInteracted = isInteracted;
     }
-    private void comproveOrder(GameObject part)
+    public void comproveOrder(GameObject part)
     {
         if(itsFall == false && isInteracted == true)
         {
@@ -46,14 +51,11 @@ public class GraveController : MonoBehaviour
                 }
             }
 
-            if (j == k)
-            {
-                //iluminar la lapida
-            }
-            else
+            if (j != k)
             {
                 itsFall = true;
                 //sale fantasma
+                Debug.Log("fantasmaso");
             }
         }
     }

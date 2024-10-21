@@ -20,6 +20,7 @@ public class ClenableProp : MonoBehaviour
 
     [SerializeField] private Text _percentageText;
     private bool _isClean = false;
+    private bool unaVez = false;
 
     public bool isClean
     {
@@ -67,6 +68,12 @@ public class ClenableProp : MonoBehaviour
                     _dirtAmount -= removedAmount;
                     int percentage =
                         Mathf.RoundToInt(_dirtAmount / _dirtAmountTotal * 100);
+
+                    if(unaVez == false)
+                    {
+                        GraveController.instance.comproveOrder(this.gameObject);
+                        unaVez = true;
+                    }
                     _percentageText.text = "" + percentage;
 
                     _dirtyMaskTexture.SetPixel(
