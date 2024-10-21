@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
@@ -9,6 +10,9 @@ public class PlayerInput : MonoBehaviour
     private Vector2 playerInput;
     private bool jumpInput;
     private bool interactInput;
+    private float shootInput;
+
+    public UnityEvent onShootEvent;
     void Start()
     {
         if(instance == null)
@@ -46,5 +50,19 @@ public class PlayerInput : MonoBehaviour
         bool interact = interactInput;
         interactInput = false;
         return interact;
+    }
+
+    public void OnShoot(InputValue inputValue)
+    {
+        shootInput = inputValue.Get<float>();
+
+        if (shootInput >= 1)
+        {
+            onShootEvent?.Invoke();
+        }
+    }
+    public float GetShootInput()
+    {
+        return shootInput;
     }
 }
