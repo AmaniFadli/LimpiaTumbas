@@ -504,6 +504,7 @@ MonoBehaviour:
   _dirtAmountTotal: 0
   _dirtAmount: 0
   _percentageText: {fileID: 1533937081}
+  _cleanThreshold: 25
 --- !u!4 &837372738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8da1117946e295543b38f15b31a30184,
