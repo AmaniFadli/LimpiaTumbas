@@ -41,11 +41,11 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _fresnelpower: 0.7
-    - _interiorspread: 0.81
+    - _interiorspread: 0.51
     m_Colors:
-    - _FresnelColor: {r: 0.6168885, g: 1.4075862, b: 3.4415908, a: 1}
-    - _InteriorColor: {r: 0, g: 0.77324426, b: 2.297397, a: 1}
-    - _InteriorPos: {r: 0.5, g: 0.16, b: 0.56, a: 0}
+    - _FresnelColor: {r: 0, g: 0.4117062, b: 4.594794, a: 1}
+    - _InteriorColor: {r: 0, g: 0.41350693, b: 2.297397, a: 1}
+    - _InteriorPos: {r: 0.94, g: 0.36, b: 0.22, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &215352409613762293
 MonoBehaviour:
