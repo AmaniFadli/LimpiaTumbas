@@ -5,49 +5,55 @@ using UnityEngine;
 public class WaterGunController : MonoBehaviour
 {
     [Header("Prefabs")]
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject water;
 
-    [Header("Time to Shoot")]
-    float ShootCoolDown = 0;
-    [SerializeField] float timeBetween;
-    private bool isShoot;
+    [Header("Textura")]
+    [SerializeField] private Texture2D _dirtBrush;
 
-    [Header("Transforms")]
-    [SerializeField] private Transform spawnBullets;
-
-    [SerializeField] private PlayerInput inpuyt;
+    [Header("RayCast")]
+    [SerializeField] private float raycastDistance = 10f;
+    [SerializeField] private Transform spawnRay;
 
     void Start()
     {
-        isShoot = false;
-        inpuyt.onShootEvent.AddListener(ShootWater);
+        
     }
     void Update()
     {
-        ShootCoolDown -= Time.deltaTime;
+        ShootWater();
     }
     public void ShootWater()
     {
         float shootInput = PlayerInput.instance.GetShootInput();
-        if(shootInput != 0 && !isShoot)
+        if(shootInput == 1)
         {
-            if(ShootCoolDown <= 0)
+            if (Physics.Raycast(spawnRay.position, spawnRay.forward, out RaycastHit raycastHit, raycastDistance))
             {
-                Vector3 shootDirection = spawnBullets.transform.forward;
-                shootDirection.Normalize();
-             
-                GameObject bulletObj = Instantiate(bulletPrefab, spawnBullets.position, Quaternion.identity);
+                Vector2 textureCoord = raycastHit.textureCoord;
 
-                Quaternion localRotation = Quaternion.Euler(90,0,0);
-                bulletObj.transform.rotation = localRotation;
-                bulletObj.GetComponent<WaterController>().Init(shootDirection);
-                isShoot = true;
-                ShootCoolDown = timeBetween;
-            } 
+                if (raycastHit.collider.TryGetComponent<ClenableProp>(out ClenableProp clenableProp))
+                {
+                    clenableProp.cleanPixel(_dirtBrush, textureCoord);
+                    water.SetActive(true);
+                }
+                else
+                {
+                    water.SetActive(false);
+                }
+            }
+            else
+            {
+                water.SetActive(false);
+            }
         }
         else
         {
-            isShoot = false;
+            water.SetActive(false);
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(gameObject.transform.position, gameObject.transform.forward * raycastDistance);
     }
 }

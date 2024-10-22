@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -10,9 +11,8 @@ public class PlayerInput : MonoBehaviour
     private Vector2 playerInput;
     private bool jumpInput;
     private bool interactInput;
-    private float shootInput;
+    private int shootInput;
 
-    public UnityEvent onShootEvent;
     void Start()
     {
         if(instance == null)
@@ -51,16 +51,18 @@ public class PlayerInput : MonoBehaviour
         return interact;
     }
 
-    public void OnShoot(InputValue inputValue)
+    public void OnShoot(InputValue value)
     {
-        shootInput = inputValue.Get<float>();
-
-        if (shootInput >= 1)
+        if (value.isPressed)
         {
-            onShootEvent?.Invoke();
+            shootInput = 1;
+        }
+        else
+        {
+            shootInput = 0;
         }
     }
-    public float GetShootInput()
+    public int GetShootInput()
     {
         return shootInput;
     }
