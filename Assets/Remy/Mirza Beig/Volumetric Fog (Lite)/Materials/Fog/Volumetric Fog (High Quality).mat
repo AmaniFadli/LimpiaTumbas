@@ -145,7 +145,7 @@ Material:
     - _Curl_Strength_Raymarch_Offset: 2
     - _Curl_Strength_Raymarch_Sample: 0.2
     - _Cutoff: 0.5
-    - _Density: 0.3
+    - _Density: 0.96
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -210,8 +210,8 @@ Material:
     - _Raymarch_Self_Shadow_Steps: 4
     - _Raymarch_Steps: 47.9
     - _ReceiveShadows: 1
-    - _Remap_Max: 0.78
-    - _Remap_Min: 0
+    - _Remap_Max: 1
+    - _Remap_Min: 0.261
     - _SIMPLEX_NOISE_ENABLED: 1
     - _SOFT_SHADOWS: 1
     - _Scale: 1.8
