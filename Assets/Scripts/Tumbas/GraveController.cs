@@ -5,28 +5,20 @@ using UnityEngine;
 
 public class GraveController : MonoBehaviour
 {
-    private const int NUMPARTS = 4;
+    [SerializeField] private const int NUMPARTS = 3;
     [SerializeField] private GameObject[] gravePartsDefault = new GameObject[NUMPARTS];
     private List<GameObject> newGraveParts = new List<GameObject>();
 
     private bool itsFall;
-    public bool isInteracted;
 
-    private void Awake()
-    {
-        isInteracted = false;
-    }
     void Start()
     {
         itsFall = false;
     }
-    public void SetIsInteracted(bool isInteracted)
-    {
-        this.isInteracted = isInteracted;
-    }
+ 
     public void comproveOrder(GameObject part)
     {
-        if(itsFall == false && isInteracted == true)
+        if(itsFall == false)
         {
             newGraveParts.Add(part);
             int j = 0;

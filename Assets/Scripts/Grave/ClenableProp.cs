@@ -42,33 +42,40 @@ public class ClenableProp : MonoBehaviour
     {
         _newMaterial = new Material(MaterialBase);
         GetComponent<MeshRenderer>().material = _newMaterial;
-        _dirtyMaskTexture = _dirtyMaskTextureBase;
-        //_dirtyMaskTexture = new Texture2D(_dirtyMaskTextureBase.width, _dirtyMaskTextureBase.height);
-        //_dirtyMaskTexture.SetPixels(_dirtyMaskTextureBase.GetPixels());
-        //_dirtyMaskTexture.Apply();
-        //_newMaterial.SetTexture("_DirtyMask", _dirtyMaskTexture);
+        _dirtyMaskTexture = new Texture2D(_dirtyMaskTextureBase.width, _dirtyMaskTextureBase.height);
+        _dirtyMaskTexture.SetPixels(_dirtyMaskTextureBase.GetPixels());
+        _dirtyMaskTexture.Apply();
+        _newMaterial.SetTexture("_DirtyMask", _dirtyMaskTexture);
         CalculatePixel();
     }
 
     public void cleanPixel(Texture2D brush, Vector2 textureCoord)
     {
-        int PixelX = (int)(textureCoord.x * _dirtyMaskTextureBase.width);
-        int PixelY = (int)(textureCoord.y * _dirtyMaskTextureBase.height);
+        int PixelX = (int)(textureCoord.x * _dirtyMaskTexture.width);
+        int PixelY = (int)(textureCoord.y * _dirtyMaskTexture.height);
 
-        //Vector2Int paintPixelPosition = new Vector2Int(PixelX, PixelY);
-        //Debug.Log("UV: " + textureCoord + "; Pixels: " + paintPixelPosition);
-
+        // Calcula el desplazamiento de píxeles
         int pixelXOffset = PixelX - (brush.width / 2);
         int pixelYOffset = PixelY - (brush.height / 2);
-        if (!_isClean && _dirtyMaskTextureBase)
+
+        // Aseguramos que los valores de pixelXOffset y pixelYOffset estén dentro de los límites
+        pixelXOffset = Mathf.Clamp(pixelXOffset, 0, _dirtyMaskTexture.width - brush.width);
+        pixelYOffset = Mathf.Clamp(pixelYOffset, 0, _dirtyMaskTexture.height - brush.height);
+
+        // Ajustar el bloque de píxeles para no salir de los límites
+        int blockWidth = Mathf.Min(brush.width, _dirtyMaskTexture.width - pixelXOffset);
+        int blockHeight = Mathf.Min(brush.height, _dirtyMaskTexture.height - pixelYOffset);
+
+
+        if (!_isClean && _dirtyMaskTexture)
         {
             bool alreadyCheckedOrder = false;
-            int totalPixels = brush.width * brush.height;
 
-            Color[] dirtPixels = brush.GetPixels();
-            Color[] maskPixels = _dirtyMaskTextureBase.GetPixels(pixelXOffset, pixelYOffset, brush.width, brush.height);
+            // Obtenemos los píxeles del pincel y de la textura de la máscara
+            Color[] dirtPixels = brush.GetPixels(0, 0, blockWidth, blockHeight);
+            Color[] maskPixels = _dirtyMaskTexture.GetPixels(pixelXOffset, pixelYOffset, blockWidth, blockHeight);
 
-            for (int i = 0; i < totalPixels; i++)
+            for (int i = 0; i < dirtPixels.Length; i++)
             {
                 Color pixelDirt = dirtPixels[i];
                 Color pixelDirtMask = maskPixels[i];
@@ -76,11 +83,10 @@ public class ClenableProp : MonoBehaviour
                 float removedAmount = pixelDirtMask.g - (pixelDirtMask.g * pixelDirt.g);
                 _dirtAmount -= removedAmount;
 
-                // Actualizar la textura
+                // Actualizamos los píxeles de la máscara
                 maskPixels[i] = new Color(0, pixelDirtMask.g * pixelDirt.g, 0);
             }
-
-            _dirtyMaskTextureBase.SetPixels(pixelXOffset, pixelYOffset, brush.width, brush.height, maskPixels);
+            _dirtyMaskTexture.SetPixels(pixelXOffset, pixelYOffset, blockWidth, blockHeight, maskPixels);
 
             /*
             for (int i = 0; i < brush.width; i++)
@@ -102,11 +108,9 @@ public class ClenableProp : MonoBehaviour
             }
 */
 
-            percentage =
-                Mathf.RoundToInt(_dirtAmount / _dirtAmountTotal * 100);
+            percentage = Mathf.RoundToInt(_dirtAmount / _dirtAmountTotal * 100);
 
-            //comprobamos si es la parte correcta
-            if (unaVez == false)
+            if (!unaVez)
             {
                 GetComponentInParent<GraveController>().comproveOrder(this.gameObject);
                 unaVez = true;
@@ -114,6 +118,7 @@ public class ClenableProp : MonoBehaviour
 
             if (_percentageText != null)
                 _percentageText.text = "" + percentage;
+
             if (percentage <= _cleanThreshold && !_isClean)
             {
                 print("Clean all");
@@ -121,7 +126,7 @@ public class ClenableProp : MonoBehaviour
             }
         }
 
-        _dirtyMaskTextureBase.Apply();
+        _dirtyMaskTexture.Apply();
     }
 
     void CalculatePixel()

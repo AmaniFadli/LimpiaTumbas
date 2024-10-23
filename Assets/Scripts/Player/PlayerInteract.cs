@@ -42,13 +42,13 @@ public class PlayerInteract : MonoBehaviour
         Quaternion rotation = grabbeable.transform.rotation;
         if (idObject.Equals("WaterGun"))
         {
-            grabbeable.transform.SetParent(interactionZoneLeft, true);
-            grabbeable.transform.position = interactionZoneLeft.position;
+            grabbeable.transform.SetParent(interactionZoneRight, true);
+            grabbeable.transform.position = interactionZoneRight.position;
         }
         else
         {
-            grabbeable.transform.SetParent(interactionZoneRight, true);
-            grabbeable.transform.position = interactionZoneRight.position;
+            grabbeable.transform.SetParent(interactionZoneLeft, true);
+            grabbeable.transform.position = interactionZoneLeft.position;
         }
     }
     public void TryToInteract()
