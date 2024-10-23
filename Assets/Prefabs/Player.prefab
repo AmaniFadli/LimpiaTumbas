@@ -58,9 +58,10 @@ GameObject:
   - component: {fileID: 3821403701854543275}
   - component: {fileID: 8606610895491657143}
   - component: {fileID: 1073470687660172757}
+  - component: {fileID: 8276795202229453870}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,6 +178,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246577ce7c132ee498b7506d2ba6f75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8276795202229453870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553029089061254342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e359e34a8668f43905985a97424a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 300
+  camera: {fileID: 8044666450030508425}
+  cinemachineCam: {fileID: 5844994845367735963}
+  input: {fileID: 7742796989163752314}
+  cameraBlock: {fileID: 3153139913923694219}
 --- !u!1 &5844994845367735963
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +304,7 @@ GameObject:
   - component: {fileID: 6700293283804093210}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

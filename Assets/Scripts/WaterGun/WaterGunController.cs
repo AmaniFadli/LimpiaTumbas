@@ -48,6 +48,10 @@ public class WaterGunController : MonoBehaviour
                     {
                         clenableProp.cleanPixel(_dirtBrush, textureCoord);
                     }
+                    if (raycastHit.collider.CompareTag("Enemy"))
+                    {
+                        raycastHit.collider.GetComponent<EnemyBehavior>().KillGhost();
+                    }
                 }
             }
             else
