@@ -23,7 +23,7 @@ public class OwlRandomSound : MonoBehaviour
         if (frameCounter == 10)
         {
             frameCounter = 0;
-            if (Random.Range(1,4) > 2)
+            if (Random.Range(1,60) > 58)
             {
                 GetComponent<StudioEventEmitter>().Play();
             }
