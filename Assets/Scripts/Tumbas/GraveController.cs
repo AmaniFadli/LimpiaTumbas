@@ -41,8 +41,8 @@ public class GraveController : MonoBehaviour
             if (j != k)
             {
                 itsFall = true;
-                //sale fantasma
-                Debug.Log("fantasmaso");
+
+                GameManager.Instance.AddFalls();
             }
         }
     }

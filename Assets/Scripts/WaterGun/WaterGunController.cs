@@ -14,9 +14,14 @@ public class WaterGunController : MonoBehaviour
     [SerializeField] private float raycastDistance;
     [SerializeField] private Transform spawnRay;
 
+    private bool isTaked;
     void Start()
     {
-        
+        isTaked = false;
+    }
+    public void SetIsTaked(bool isTaked)
+    {
+        this.isTaked = isTaked;
     }
     void Update()
     {
@@ -24,17 +29,21 @@ public class WaterGunController : MonoBehaviour
     }
     public void ShootWater()
     {
-        float shootInput = PlayerInput.instance.GetShootInput();
-        if(shootInput == 1)
+        if(isTaked)
         {
-            if (Physics.Raycast(spawnRay.position, spawnRay.forward, out RaycastHit raycastHit, raycastDistance))
+            float shootInput = PlayerInput.instance.GetShootInput();
+            if (shootInput == 1)
             {
-                Vector2 textureCoord = raycastHit.textureCoord;
-
-                if (raycastHit.collider.TryGetComponent<ClenableProp>(out ClenableProp clenableProp))
+                if (Physics.Raycast(spawnRay.position, spawnRay.forward, out RaycastHit raycastHit, raycastDistance))
                 {
-                    clenableProp.cleanPixel(_dirtBrush, textureCoord);
+                    Vector2 textureCoord = raycastHit.textureCoord;
+
                     water.SetActive(true);
+
+                    if (raycastHit.collider.TryGetComponent<ClenableProp>(out ClenableProp clenableProp))
+                    {
+                        clenableProp.cleanPixel(_dirtBrush, textureCoord);
+                    }
                 }
                 else
                 {
@@ -45,11 +54,7 @@ public class WaterGunController : MonoBehaviour
             {
                 water.SetActive(false);
             }
-        }
-        else
-        {
-            water.SetActive(false);
-        }
+        } 
     }
     private void OnDrawGizmos()
     {
