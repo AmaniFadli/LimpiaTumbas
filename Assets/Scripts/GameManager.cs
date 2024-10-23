@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] private GameObject enemySpawner;
     private int falls;
 
     void Start()
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         if(falls < 3)
         {
             CameraShake.instance.onShake();
+            enemySpawner.GetComponent<EnemySpawner>().SpawnEnemyOnMistake();
             Debug.Log("aadadad");
         }
         else if(falls == 3)
