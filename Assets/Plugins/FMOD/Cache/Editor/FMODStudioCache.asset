@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638652096254602203
+  lastModified: 638653113945248756
   FileSizes:
   - Name: Desktop
-    Value: 854
+    Value: 978
   Exists: 1
 --- !u!114 &-3011868245143565873
 MonoBehaviour:
@@ -35,10 +35,10 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638652096255180922
+  lastModified: 638653114089128821
   FileSizes:
   - Name: Desktop
-    Value: 8776128
+    Value: 8776448
   Exists: 1
 --- !u!114 &-1028432393890288721
 MonoBehaviour:
@@ -55,7 +55,7 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638652096254592230
+  lastModified: 638653113945228811
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -79,13 +79,70 @@ MonoBehaviour:
   - {fileID: 6827318884005587763}
   EditorEvents:
   - {fileID: 5348005744739808769}
+  - {fileID: 378971492859711356}
+  - {fileID: 887699572547493194}
+  - {fileID: 7688589020299945352}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1028432393890288721}
   StringsBanks:
   - {fileID: -8085266547434743355}
-  cacheTime: 638652096255180922
+  cacheTime: 638653114099130864
   cacheVersion: 131620
+--- !u!114 &378971492859711356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Owl
+  m_EditorClassIdentifier: 
+  Path: event:/Owl
+  Guid:
+    Data1: -1132145060
+    Data2: 1209800113
+    Data3: -2113748086
+    Data4: 752334497
+  Banks:
+  - {fileID: 6827318884005587763}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &887699572547493194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footstep
+  m_EditorClassIdentifier: 
+  Path: event:/Footstep
+  Guid:
+    Data1: 246038445
+    Data2: 1293318153
+    Data3: -1078348116
+    Data4: 1436845366
+  Banks:
+  - {fileID: 6827318884005587763}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &5348005744739808769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,8 +185,35 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638652096255180922
+  lastModified: 638653114099130864
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 665760
   Exists: 1
+--- !u!114 &7688589020299945352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WaterGun
+  m_EditorClassIdentifier: 
+  Path: event:/WaterGun
+  Guid:
+    Data1: -2018755606
+    Data2: 1296155753
+    Data3: 1948100526
+    Data4: -1890204157
+  Banks:
+  - {fileID: 6827318884005587763}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 52992
