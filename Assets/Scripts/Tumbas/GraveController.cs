@@ -8,6 +8,7 @@ public class GraveController : MonoBehaviour
     [SerializeField] private const int NUMPARTS = 3;
     [SerializeField] private GameObject[] gravePartsDefault = new GameObject[NUMPARTS];
     private List<GameObject> newGraveParts = new List<GameObject>();
+    private FMOD.Studio.EventInstance horrorSound;
 
     private bool itsFall;
 
@@ -42,6 +43,10 @@ public class GraveController : MonoBehaviour
             {
                 itsFall = true;
                 Debug.Log("shake");
+                horrorSound = FMODUnity.RuntimeManager.CreateInstance("event:/FailedPuzzle");
+                horrorSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                horrorSound.start();
+                horrorSound.release();
                 GameManager.Instance.AddFalls();
             }
         }

@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded = true;
     private Vector3 playerTransform;
-
+    private FMOD.Studio.EventInstance foosteps;
+    private Coroutine isMoving;
     void Start()
     {
         if (instance == null)
@@ -45,6 +46,10 @@ public class PlayerController : MonoBehaviour
         cameraForward.Normalize();
         cameraRight.Normalize();
 
+        if (isMoving == null && playerWasp != Vector2.zero)
+        {
+            isMoving = StartCoroutine(_PlayFootstep());
+        }
         Vector3 input = cameraForward * playerWasp.y + cameraRight * playerWasp.x;
         MVB.Move(input);
     }
@@ -64,5 +69,15 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    private IEnumerator _PlayFootstep()
+    {
+        foosteps = FMODUnity.RuntimeManager.CreateInstance("event:/Footstep");
+        foosteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        foosteps.start();
+        foosteps.release();
+        yield return new WaitForSeconds(0.4f);
+        isMoving = null;
     }
 }
