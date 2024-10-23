@@ -22,10 +22,9 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            SpawnEnemy();
-
             float randomDelay = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(randomDelay);
+            SpawnEnemy();
         }
     }
 

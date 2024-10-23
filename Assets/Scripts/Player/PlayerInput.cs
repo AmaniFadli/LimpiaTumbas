@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
     private bool jumpInput;
     private bool interactInput;
     private int shootInput;
-
+    private bool tabInput;
     void Start()
     {
         if(instance == null)
@@ -65,5 +65,21 @@ public class PlayerInput : MonoBehaviour
     public int GetShootInput()
     {
         return shootInput;
+    }
+
+    public void OnNote(InputAction.CallbackContext ctx)
+    {
+        if(!tabInput)
+        {
+            tabInput = true;
+        }
+        else
+        {
+            tabInput = false;
+        }
+    }
+    public bool GetTabInput()
+    {
+        return tabInput;
     }
 }

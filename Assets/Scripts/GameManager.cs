@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject enemySpawner;
     private int falls;
 
+    [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject noteCanvas;
     void Start()
     {
         falls = 0;
@@ -29,7 +31,26 @@ public class GameManager : MonoBehaviour
         }
         else if(falls == 3)
         {
-            //game over
+            gameOver.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+    private void Update()
+    {
+        Note();
+    }
+    public void Note()
+    {
+        bool tab = PlayerInput.instance.GetTabInput();
+        if(tab)
+        {
+            noteCanvas.SetActive(true);
+        }
+        else
+        {
+            noteCanvas.SetActive(false);
         }
     }
 }
