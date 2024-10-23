@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{4ac2e582-b15e-4bb8-be77-e06403a8fdf2}">
+		<property name="assetPath">
+			<value>footsteps-on-gravel-61337.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>182.136</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{dc57212d-36bb-4246-9aa4-0f4354d14550}</destination>
+		</relationship>
+	</object>
+</objects>

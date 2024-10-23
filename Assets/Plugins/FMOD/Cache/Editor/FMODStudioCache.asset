@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638652099151288742
+  lastModified: 638652096254602203
   FileSizes:
   - Name: Desktop
     Value: 854
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638652099151472076
+  lastModified: 638652096255180922
   FileSizes:
   - Name: Desktop
     Value: 8776128
@@ -55,7 +55,7 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638652099151288742
+  lastModified: 638652096254592230
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -84,7 +84,7 @@ MonoBehaviour:
   - {fileID: -1028432393890288721}
   StringsBanks:
   - {fileID: -8085266547434743355}
-  cacheTime: 638652099151472076
+  cacheTime: 638652096255180922
   cacheVersion: 131620
 --- !u!114 &5348005744739808769
 MonoBehaviour:
@@ -128,7 +128,7 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638652099151472076
+  lastModified: 638652096255180922
   FileSizes:
   - Name: Desktop
     Value: 494
