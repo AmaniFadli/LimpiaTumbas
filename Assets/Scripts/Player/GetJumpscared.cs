@@ -82,6 +82,6 @@ public class GetJumpscared : MonoBehaviour
     private void BlockPlayerCamera()
     {
         cameraBlock.enabled = false;
-        
+        GameManager.Instance.GameOver();
     }
 }  

@@ -31,10 +31,7 @@ public class GameManager : MonoBehaviour
         }
         else if(falls == 3)
         {
-            gameOver.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            GameOver();
         }
     }
     private void Update()
@@ -52,5 +49,13 @@ public class GameManager : MonoBehaviour
         {
             noteCanvas.SetActive(false);
         }
+    }
+
+    public void GameOver()
+    {
+        gameOver.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
