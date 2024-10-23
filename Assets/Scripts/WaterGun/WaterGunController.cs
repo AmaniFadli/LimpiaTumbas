@@ -5,75 +5,55 @@ using UnityEngine;
 public class WaterGunController : MonoBehaviour
 {
     [Header("Prefabs")]
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject water;
 
-    [Header("Time to Shoot")]
-    float ShootCoolDown = 0;
-    [SerializeField] float timeBetween;
-    private bool isShoot;
+    [Header("Textura")]
+    [SerializeField] private Texture2D _dirtBrush;
 
-    [Header("Transforms")]
-    [SerializeField] private Transform spawnBullets;
+    [Header("RayCast")]
+    [SerializeField] private float raycastDistance;
+    [SerializeField] private Transform spawnRay;
 
-    private FMOD.Studio.EventInstance waterSound;
-    private bool isShooting;
-    [SerializeField] private PlayerInput inpuyt;
-
-    private 
-
+    private bool isTaked;
     void Start()
     {
-        PlayWaterSound();
-        isShoot = false;
-        inpuyt.onShootEvent.AddListener(ShootWater);
+        isTaked = false;
+    }
+    public void SetIsTaked(bool isTaked)
+    {
+        this.isTaked = isTaked;
     }
     void Update()
     {
-        ShootCoolDown -= Time.deltaTime;
-        if (isShooting )
-        {
-            waterSound.setPaused(false);
-        }
-        else
-        {
-            waterSound.setPaused(false);
-        }
+        ShootWater();
     }
     public void ShootWater()
     {
-        float shootInput = PlayerInput.instance.GetShootInput();
-        if(shootInput != 0 && !isShoot)
+        if(isTaked)
         {
-            if(ShootCoolDown <= 0)
+            float shootInput = PlayerInput.instance.GetShootInput();
+            if (shootInput == 1)
             {
-                Vector3 shootDirection = spawnBullets.transform.forward;
-                shootDirection.Normalize();
-             
-                GameObject bulletObj = Instantiate(bulletPrefab, spawnBullets.position, Quaternion.identity);
-                Quaternion localRotation = Quaternion.Euler(90,0,0);
-                bulletObj.transform.rotation = localRotation;
-                bulletObj.GetComponent<WaterController>().Init(shootDirection);
-                isShoot = true;
-                ShootCoolDown = timeBetween;
-            } 
-        }
-        else
-        {
-            isShoot = false;
-        }
+                water.SetActive(true);
+                if (Physics.Raycast(spawnRay.position, spawnRay.forward, out RaycastHit raycastHit, raycastDistance))
+                {
+                    Vector2 textureCoord = raycastHit.textureCoord;
+
+                    if (raycastHit.collider.TryGetComponent<ClenableProp>(out ClenableProp clenableProp))
+                    {
+                        clenableProp.cleanPixel(_dirtBrush, textureCoord);
+                    }
+                }
+            }
+            else
+            {
+                water.SetActive(false);
+            }
+        } 
     }
-
-    private void PlayWaterSound()
+    private void OnDrawGizmos()
     {
-        waterSound = FMODUnity.RuntimeManager.CreateInstance("event:/WaterGun");
-        waterSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-        waterSound.start();
-
-    }
-
-    public void StopWaterSound()
-    {
-        waterSound.setPaused(true);
-        waterSound.release();
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(gameObject.transform.position, gameObject.transform.forward * raycastDistance);
     }
 }
