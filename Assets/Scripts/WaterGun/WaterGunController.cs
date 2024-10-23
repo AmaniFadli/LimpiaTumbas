@@ -15,16 +15,29 @@ public class WaterGunController : MonoBehaviour
     [Header("Transforms")]
     [SerializeField] private Transform spawnBullets;
 
+    private FMOD.Studio.EventInstance waterSound;
+    private bool isShooting;
     [SerializeField] private PlayerInput inpuyt;
+
+    private 
 
     void Start()
     {
+        PlayWaterSound();
         isShoot = false;
         inpuyt.onShootEvent.AddListener(ShootWater);
     }
     void Update()
     {
         ShootCoolDown -= Time.deltaTime;
+        if (isShooting )
+        {
+            waterSound.setPaused(false);
+        }
+        else
+        {
+            waterSound.setPaused(false);
+        }
     }
     public void ShootWater()
     {
@@ -37,7 +50,6 @@ public class WaterGunController : MonoBehaviour
                 shootDirection.Normalize();
              
                 GameObject bulletObj = Instantiate(bulletPrefab, spawnBullets.position, Quaternion.identity);
-
                 Quaternion localRotation = Quaternion.Euler(90,0,0);
                 bulletObj.transform.rotation = localRotation;
                 bulletObj.GetComponent<WaterController>().Init(shootDirection);
@@ -49,5 +61,19 @@ public class WaterGunController : MonoBehaviour
         {
             isShoot = false;
         }
+    }
+
+    private void PlayWaterSound()
+    {
+        waterSound = FMODUnity.RuntimeManager.CreateInstance("event:/WaterGun");
+        waterSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        waterSound.start();
+
+    }
+
+    public void StopWaterSound()
+    {
+        waterSound.setPaused(true);
+        waterSound.release();
     }
 }
