@@ -86,6 +86,7 @@ public class ClenableProp : MonoBehaviour
                 // Actualizamos los píxeles de la máscara
                 maskPixels[i] = new Color(0, pixelDirtMask.g * pixelDirt.g, 0);
             }
+
             _dirtyMaskTexture.SetPixels(pixelXOffset, pixelYOffset, blockWidth, blockHeight, maskPixels);
 
             /*
@@ -131,17 +132,43 @@ public class ClenableProp : MonoBehaviour
 
     void CalculatePixel()
     {
-        for (int i = 0; i < _dirtyMaskTextureBase.width; i++)
-        {
-            for (int j = 0; j < _dirtyMaskTextureBase.height; j++)
-            {
-                _dirtAmountTotal += _dirtyMaskTextureBase.GetPixel(i, j).g;
-            }
-        }
+        // Obtener todos los píxeles de la textura en un solo paso
+        Color[] pixels = _dirtyMaskTextureBase.GetPixels();
+        _dirtAmountTotal = 0f;
 
-        _dirtAmount = _dirtAmountTotal;
-        if (_percentageText != null)
-            _percentageText.text = "100";
+        // Recorrer el arreglo de píxeles y sumar el valor del canal verde
+        
+        for (int i = 0; i < pixels.Length; i+=16)
+        {
+            _dirtAmountTotal += pixels[i].g;
+            _dirtAmountTotal += pixels[i+1].g;
+            _dirtAmountTotal += pixels[i+2].g;
+            _dirtAmountTotal += pixels[i+3].g;
+            _dirtAmountTotal += pixels[i+4].g;
+            _dirtAmountTotal += pixels[i+5].g;
+            _dirtAmountTotal += pixels[i+6].g;
+            _dirtAmountTotal += pixels[i+7].g;
+            _dirtAmountTotal += pixels[i+8].g;
+            _dirtAmountTotal += pixels[i+9].g;
+            _dirtAmountTotal += pixels[i+10].g;
+            _dirtAmountTotal += pixels[i+11].g;
+            _dirtAmountTotal += pixels[i+12].g;
+            _dirtAmountTotal += pixels[i+13].g;
+            _dirtAmountTotal += pixels[i+14].g;
+            _dirtAmountTotal += pixels[i+15].g;
+        }
+        //
+        // for (int i = 0; i < _dirtyMaskTextureBase.width; i++)
+        // {
+        //     for (int j = 0; j < _dirtyMaskTextureBase.height; j++)
+        //     {
+        //         _dirtAmountTotal += _dirtyMaskTextureBase.GetPixel(i, j).g;
+        //     }
+        // }
+        //
+        // _dirtAmount = _dirtAmountTotal;
+        // if (_percentageText != null)
+        //     _percentageText.text = "100";
     }
 
     void CleanModel()
@@ -153,6 +180,7 @@ public class ClenableProp : MonoBehaviour
         //         _dirtyMaskTexture.SetPixel(i, j, Color.black);
         //     }
         // }
+        
         int mipCount = _dirtyMaskTexture.mipmapCount;
         for (int i = 0; i < mipCount; i++)
         {
