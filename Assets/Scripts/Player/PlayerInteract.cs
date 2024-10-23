@@ -12,11 +12,7 @@ public class PlayerInteract : MonoBehaviour
     private GameObject currentFeedback;
     [SerializeField] private Transform interactionZoneLeft;
     [SerializeField] private Transform interactionZoneRight;
-    private GameObject grabbeableObj;
-    void Start()
-    {
-        grabbeableObj = null;
-    }
+
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
@@ -44,7 +40,7 @@ public class PlayerInteract : MonoBehaviour
     public void GrabItem(GameObject grabbeable, string idObject)
     {
         Quaternion rotation = grabbeable.transform.rotation;
-        if (idObject.Equals("Linterna"))
+        if (idObject.Equals("WaterGun"))
         {
             grabbeable.transform.SetParent(interactionZoneLeft, true);
             grabbeable.transform.position = interactionZoneLeft.position;
@@ -54,8 +50,6 @@ public class PlayerInteract : MonoBehaviour
             grabbeable.transform.SetParent(interactionZoneRight, true);
             grabbeable.transform.position = interactionZoneRight.position;
         }
-      
-        grabbeableObj = grabbeable;
     }
     public void TryToInteract()
     {

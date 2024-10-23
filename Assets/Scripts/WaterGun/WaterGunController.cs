@@ -11,7 +11,7 @@ public class WaterGunController : MonoBehaviour
     [SerializeField] private Texture2D _dirtBrush;
 
     [Header("RayCast")]
-    [SerializeField] private float raycastDistance = 10f;
+    [SerializeField] private float raycastDistance;
     [SerializeField] private Transform spawnRay;
 
     void Start()
