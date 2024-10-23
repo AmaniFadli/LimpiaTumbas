@@ -34,20 +34,15 @@ public class WaterGunController : MonoBehaviour
             float shootInput = PlayerInput.instance.GetShootInput();
             if (shootInput == 1)
             {
+                water.SetActive(true);
                 if (Physics.Raycast(spawnRay.position, spawnRay.forward, out RaycastHit raycastHit, raycastDistance))
                 {
                     Vector2 textureCoord = raycastHit.textureCoord;
-
-                    water.SetActive(true);
 
                     if (raycastHit.collider.TryGetComponent<ClenableProp>(out ClenableProp clenableProp))
                     {
                         clenableProp.cleanPixel(_dirtBrush, textureCoord);
                     }
-                }
-                else
-                {
-                    water.SetActive(false);
                 }
             }
             else

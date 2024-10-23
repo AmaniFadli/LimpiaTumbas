@@ -7,14 +7,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private int falls;
+
     void Start()
     {
         falls = 0;
-    }
-
-    void Update()
-    {
-        
+        if(Instance == null)
+        {
+            Instance = this;
+        }
     }
 
     public void AddFalls()
@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
         falls++;
         if(falls < 3)
         {
-            //screm pantalla
+            CameraShake.instance.onShake();
+            Debug.Log("aadadad");
         }
         else if(falls == 3)
         {

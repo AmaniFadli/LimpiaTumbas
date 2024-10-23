@@ -41,7 +41,7 @@ public class GraveController : MonoBehaviour
             if (j != k)
             {
                 itsFall = true;
-
+                Debug.Log("shake");
                 GameManager.Instance.AddFalls();
             }
         }
