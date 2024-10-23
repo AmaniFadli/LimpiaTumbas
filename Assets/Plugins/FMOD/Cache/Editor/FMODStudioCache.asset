@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638653173755078508
+  lastModified: 638653190398415170
   FileSizes:
   - Name: Desktop
-    Value: 1078
+    Value: 1172
   Exists: 1
 --- !u!114 &-5215538157436401592
 MonoBehaviour:
@@ -94,6 +94,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 8782432
   Exists: 1
+--- !u!114 &-2622967432696609086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FailedPuzzle
+  m_EditorClassIdentifier: 
+  Path: event:/FailedPuzzle
+  Guid:
+    Data1: 1525051838
+    Data2: 1123718532
+    Data3: 491773061
+    Data4: -1643699186
+  Banks:
+  - {fileID: 6827318884005587763}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1028432393890288721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +136,7 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638653173755058562
+  lastModified: 638653190398395227
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -138,12 +165,14 @@ MonoBehaviour:
   - {fileID: 7688589020299945352}
   - {fileID: -5215538157436401592}
   - {fileID: -8353791582814110305}
+  - {fileID: 794516995489824073}
+  - {fileID: -2622967432696609086}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1028432393890288721}
   StringsBanks:
   - {fileID: -8085266547434743355}
-  cacheTime: 638653173758554512
+  cacheTime: 638653190400026389
   cacheVersion: 131620
 --- !u!114 &378971492859711356
 MonoBehaviour:
@@ -172,6 +201,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &794516995489824073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jumpscare
+  m_EditorClassIdentifier: 
+  Path: event:/Jumpscare
+  Guid:
+    Data1: -2096422717
+    Data2: 1231841738
+    Data3: 1257202086
+    Data4: 1988368191
+  Banks:
+  - {fileID: 6827318884005587763}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9709
 --- !u!114 &887699572547493194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,10 +297,10 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638653173758554512
+  lastModified: 638653190400026389
   FileSizes:
   - Name: Desktop
-    Value: 670432
+    Value: 900416
   Exists: 1
 --- !u!114 &7688589020299945352
 MonoBehaviour:

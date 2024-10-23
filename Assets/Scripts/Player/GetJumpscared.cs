@@ -13,7 +13,8 @@ public class GetJumpscared : MonoBehaviour
     [SerializeField] private UnityEngine.InputSystem.PlayerInput input;
     [SerializeField] private PCamera cameraBlock;
     private bool canRotate = true;
-    
+    private FMOD.Studio.EventInstance screamSound;
+
 
     private bool isActivated = false;
 
@@ -51,7 +52,10 @@ public class GetJumpscared : MonoBehaviour
 
 
         float totalRotationTime = Quaternion.Angle(initialRotation, targetRotation) / rotationSpeed;
-
+        screamSound = FMODUnity.RuntimeManager.CreateInstance("event:/Jumpscare");
+        screamSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        screamSound.start();
+        screamSound.release();
         while (elapsedTime < totalRotationTime)
         {
 
