@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8353791582814110305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PauseMenuSound
+  m_EditorClassIdentifier: 
+  Path: event:/PauseMenuSound
+  Guid:
+    Data1: 150118290
+    Data2: 1277411680
+    Data3: -865654342
+    Data4: 29466606
+  Banks:
+  - {fileID: 6827318884005587763}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8085266547434743355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,11 +42,38 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638653113945248756
+  lastModified: 638653173755078508
   FileSizes:
   - Name: Desktop
-    Value: 978
+    Value: 1078
   Exists: 1
+--- !u!114 &-5215538157436401592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OpenNotebook
+  m_EditorClassIdentifier: 
+  Path: event:/OpenNotebook
+  Guid:
+    Data1: 1629116438
+    Data2: 1253698769
+    Data3: 154737551
+    Data4: 1068042986
+  Banks:
+  - {fileID: -3011868245143565873}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3011868245143565873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,10 +89,10 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638653114089128821
+  lastModified: 638653173758157169
   FileSizes:
   - Name: Desktop
-    Value: 8776448
+    Value: 8782432
   Exists: 1
 --- !u!114 &-1028432393890288721
 MonoBehaviour:
@@ -55,7 +109,7 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638653113945228811
+  lastModified: 638653173755058562
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -82,12 +136,14 @@ MonoBehaviour:
   - {fileID: 378971492859711356}
   - {fileID: 887699572547493194}
   - {fileID: 7688589020299945352}
+  - {fileID: -5215538157436401592}
+  - {fileID: -8353791582814110305}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1028432393890288721}
   StringsBanks:
   - {fileID: -8085266547434743355}
-  cacheTime: 638653114099130864
+  cacheTime: 638653173758554512
   cacheVersion: 131620
 --- !u!114 &378971492859711356
 MonoBehaviour:
@@ -185,10 +241,10 @@ MonoBehaviour:
   Path: FMODLimpiaTumbas/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638653114099130864
+  lastModified: 638653173758554512
   FileSizes:
   - Name: Desktop
-    Value: 665760
+    Value: 670432
   Exists: 1
 --- !u!114 &7688589020299945352
 MonoBehaviour:
