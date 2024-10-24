@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class GetJumpscared : MonoBehaviour
 {
     private Transform targetPoint; 
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private GameObject camera;
+    [FormerlySerializedAs("camera")] [SerializeField] private GameObject _camera;
     [SerializeField] private GameObject cinemachineCam;
     [SerializeField] private UnityEngine.InputSystem.PlayerInput input;
     [SerializeField] private PCamera cameraBlock;
@@ -44,7 +45,7 @@ public class GetJumpscared : MonoBehaviour
         canRotate = false; 
         float elapsedTime = 0f; 
 
-        Quaternion initialRotation = camera.transform.rotation; 
+        Quaternion initialRotation = _camera.transform.rotation; 
         Vector3 directionToTarget = targetPoint.position - transform.position;
         directionToTarget.y = 0;
 
@@ -59,7 +60,7 @@ public class GetJumpscared : MonoBehaviour
         while (elapsedTime < totalRotationTime)
         {
 
-            camera.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / totalRotationTime);
+            _camera.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / totalRotationTime);
             cinemachineCam.transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / totalRotationTime);
 
             elapsedTime += Time.deltaTime; 
@@ -67,7 +68,7 @@ public class GetJumpscared : MonoBehaviour
         }
 
 
-        camera.transform.rotation = targetRotation;
+        _camera.transform.rotation = targetRotation;
         cinemachineCam.transform.rotation = targetRotation;
 
         BlockPlayerCamera();

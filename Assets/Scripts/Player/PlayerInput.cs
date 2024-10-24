@@ -67,16 +67,9 @@ public class PlayerInput : MonoBehaviour
         return shootInput;
     }
 
-    public void OnNote(InputAction.CallbackContext ctx)
+    public void OnNote(InputValue value)
     {
-        if(!tabInput)
-        {
-            tabInput = true;
-        }
-        else
-        {
-            tabInput = false;
-        }
+        tabInput = !tabInput;
     }
     public bool GetTabInput()
     {

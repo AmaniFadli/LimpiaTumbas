@@ -7657,7 +7657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 2141180400}
   gameOver: {fileID: 2045240320}
-  noteCanvas: {fileID: 1819176839}
+  noteCanvas: {fileID: 1902367050}
+  _initialNote: {fileID: 1819176839}
 --- !u!4 &797213941
 Transform:
   m_ObjectHideFlags: 0
@@ -21742,6 +21743,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: decc38d9224f4e546b1cb7b0bead5c9b, type: 3}
+--- !u!1 &1902367050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2983269516922109842, guid: c6d787490a2400846b14b3f690f6bf87,
+    type: 3}
+  m_PrefabInstance: {fileID: 160244945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1903251637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d8933cdded57ce40a8fa78c79e3a862,
@@ -23830,6 +23837,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -62.340546
       objectReference: {fileID: 0}
+    - target: {fileID: 8583944027140241837, guid: abb1a33d026b15e4ea53b68d7d2b20b1,
+        type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25594,7 +25606,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!23 &3171400828513112325
 MeshRenderer:

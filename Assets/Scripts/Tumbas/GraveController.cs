@@ -47,7 +47,7 @@ public class GraveController : MonoBehaviour
                 horrorSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
                 horrorSound.start();
                 horrorSound.release();
-                GameManager.Instance.AddFalls();
+                GameManager.Instance.AddFails();
             }
         }
     }

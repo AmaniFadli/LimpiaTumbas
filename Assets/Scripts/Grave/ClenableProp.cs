@@ -69,8 +69,6 @@ public class ClenableProp : MonoBehaviour
 
         if (!_isClean && _dirtyMaskTexture)
         {
-            bool alreadyCheckedOrder = false;
-
             // Obtenemos los píxeles del pincel y de la textura de la máscara
             Color[] dirtPixels = brush.GetPixels(0, 0, blockWidth, blockHeight);
             Color[] maskPixels = _dirtyMaskTexture.GetPixels(pixelXOffset, pixelYOffset, blockWidth, blockHeight);
@@ -137,25 +135,25 @@ public class ClenableProp : MonoBehaviour
         _dirtAmountTotal = 0f;
 
         // Recorrer el arreglo de píxeles y sumar el valor del canal verde
-        
-        for (int i = 0; i < pixels.Length; i+=16)
+
+        for (int i = 0; i < pixels.Length; i += 16)
         {
             _dirtAmountTotal += pixels[i].g;
-            _dirtAmountTotal += pixels[i+1].g;
-            _dirtAmountTotal += pixels[i+2].g;
-            _dirtAmountTotal += pixels[i+3].g;
-            _dirtAmountTotal += pixels[i+4].g;
-            _dirtAmountTotal += pixels[i+5].g;
-            _dirtAmountTotal += pixels[i+6].g;
-            _dirtAmountTotal += pixels[i+7].g;
-            _dirtAmountTotal += pixels[i+8].g;
-            _dirtAmountTotal += pixels[i+9].g;
-            _dirtAmountTotal += pixels[i+10].g;
-            _dirtAmountTotal += pixels[i+11].g;
-            _dirtAmountTotal += pixels[i+12].g;
-            _dirtAmountTotal += pixels[i+13].g;
-            _dirtAmountTotal += pixels[i+14].g;
-            _dirtAmountTotal += pixels[i+15].g;
+            _dirtAmountTotal += pixels[i + 1].g;
+            _dirtAmountTotal += pixels[i + 2].g;
+            _dirtAmountTotal += pixels[i + 3].g;
+            _dirtAmountTotal += pixels[i + 4].g;
+            _dirtAmountTotal += pixels[i + 5].g;
+            _dirtAmountTotal += pixels[i + 6].g;
+            _dirtAmountTotal += pixels[i + 7].g;
+            _dirtAmountTotal += pixels[i + 8].g;
+            _dirtAmountTotal += pixels[i + 9].g;
+            _dirtAmountTotal += pixels[i + 10].g;
+            _dirtAmountTotal += pixels[i + 11].g;
+            _dirtAmountTotal += pixels[i + 12].g;
+            _dirtAmountTotal += pixels[i + 13].g;
+            _dirtAmountTotal += pixels[i + 14].g;
+            _dirtAmountTotal += pixels[i + 15].g;
         }
         //
         // for (int i = 0; i < _dirtyMaskTextureBase.width; i++)
@@ -180,7 +178,7 @@ public class ClenableProp : MonoBehaviour
         //         _dirtyMaskTexture.SetPixel(i, j, Color.black);
         //     }
         // }
-        
+
         int mipCount = _dirtyMaskTexture.mipmapCount;
         for (int i = 0; i < mipCount; i++)
         {
