@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e359e34a8668f43905985a97424a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 300
-  camera: {fileID: 8044666450030508425}
+  rotationSpeed: 400
+  _camera: {fileID: 8044666450030508425}
   cinemachineCam: {fileID: 5844994845367735963}
   input: {fileID: 7742796989163752314}
   cameraBlock: {fileID: 3153139913923694219}

@@ -83,6 +83,12 @@ public class GetJumpscared : MonoBehaviour
     private void BlockPlayerCamera()
     {
         cameraBlock.enabled = false;
+        StartCoroutine(ShowGameOver());
+    }
+
+    private IEnumerator ShowGameOver()
+    {
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.GameOver();
     }
 }  
