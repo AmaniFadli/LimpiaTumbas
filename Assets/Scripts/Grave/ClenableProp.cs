@@ -32,6 +32,7 @@ public class ClenableProp : MonoBehaviour
     }
 
     [SerializeField] private float _cleanThreshold = 5f;
+    [SerializeField] private float _wrongThreshold = 5f;
 
     private int _cleanPosition;
 
@@ -111,12 +112,17 @@ public class ClenableProp : MonoBehaviour
 
             if (!unaVez)
             {
-                GetComponentInParent<GraveController>().comproveOrder(this.gameObject);
-                unaVez = true;
+                
             }
 
             if (_percentageText != null)
                 _percentageText.text = "" + percentage;
+
+            if (percentage <= _wrongThreshold && !unaVez)
+            {
+                GetComponentInParent<GraveController>().comproveOrder(this.gameObject);
+                unaVez = true;
+            }
 
             if (percentage <= _cleanThreshold && !_isClean)
             {
